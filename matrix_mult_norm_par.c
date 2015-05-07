@@ -1,7 +1,7 @@
 #include <cblas.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
+#include <pthread.h>//This
 #include <math.h>
 #include <sys/time.h>
 
@@ -76,8 +76,8 @@ void printMat(int n, double mat[] , char* matName){
 }
 
 int main(int argc, char *argv[]) {
-   	struct timeval tv1, tv2;
-	struct timezone tz;
+   	struct timeval tv1, tv2;//This
+	struct timezone tz;//This
 
 	pthread_t *working_thread;
    	mat_mult_t *thread_mat_mult_data;
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
    	working_thread = malloc(num_of_thrds * sizeof(pthread_t));
    	thread_mat_mult_data = malloc(num_of_thrds * sizeof(mat_mult_t));
 	rows_per_thread = n/num_of_thrds;
-	gettimeofday(&tv1, &tz);
+	gettimeofday(&tv1, &tz);//This
    	
 	for(i=0;i<num_of_thrds;i++){
       		thread_mat_mult_data[i].x = x + i * rows_per_thread * n;
@@ -139,10 +139,10 @@ int main(int argc, char *argv[]) {
         pthread_join(working_thread[i], &status);
 	}
     
-	gettimeofday(&tv2, &tz);
+	gettimeofday(&tv2, &tz);//This
  	//printf("\nRow Sum Norm = %f\n", norm);
- 	double elapsed = (double) (tv2.tv_sec-tv1.tv_sec) + (double) (tv2.tv_usec-tv1.tv_usec) * 1.e-6;
-	printf("Time = %f\n",elapsed);
+ 	double elapsed = (double) (tv2.tv_sec-tv1.tv_sec) + (double) (tv2.tv_usec-tv1.tv_usec) * 1.e-6;//This
+	printf("Time = %f\n",elapsed);//This
  	
    	free(x);   	
    	free(y);   
